@@ -9,14 +9,14 @@
 7. ament_package() để ROS 2 build và export
 
 ### 1. Cấu hình cơ bản 
-```bash
+```cmake
 cmake_minimum_required(VERSION 3.8)
 project(gamepad_interface)
 ```
 Cmake cần phải có phiên bản từ 3.8 trở lên mới có thể chạy được file này.\
 project(gamepad_interface) để khai báo tên project là package trong ROS.\
 
-```bash
+```cmake
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
@@ -24,7 +24,7 @@ endif()
 Cấu hình compiler để giúp code sạch cảnh báo.
 
 ### 2. Khai báo các dependencies 
-```bash
+```cmake
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(robot_interfaces REQUIRED)
@@ -38,7 +38,7 @@ include_directories(include)
 * include_directories(include) → thêm thư mục include/ để các file .hpp có thể được tìm thấy bởi #include.
 
   ### 3. Thêm thư viện driver
-```bash
+```cmake
 add_library(gamepad_driver
   src/gamepad.cpp
 )
@@ -49,7 +49,7 @@ add_library(gamepad_driver src/gamepad.cpp) → tạo thư viện gamepad_driver
 target_compile_features(... cxx_std_11) → dùng chuẩn C++11.
 
 📌 Đây là thư viện xử lý mức thấp, đọc tín hiệu từ /dev/input/eventNN.
-```bash
+```cmake
 add_library(robot_input_mapper
   src/mapper.cpp
 )
@@ -69,7 +69,7 @@ Khi khai báo thư viện phụ thuộc như vậy cần đảm bảo đã khai 
 ament_target_dependencies(... robot_interfaces) → dùng message/interface từ package robot_interfaces.
 
 ### Node ROS2
-```bash
+```cmake
 add_executable(gamepad_node
   src/gamepad_node.cpp
 )
@@ -87,7 +87,7 @@ add_executable( ) để tạo node từ file cpp.\
 Sau đó target_link_libraries để khai báo thư viện mà node phụ thuộc.\
 Khai báo node phụ thuộc: ament_target_dependencies → node phụ thuộc vào rclcpp (API ROS2) và robot_interfaces.\
 Cài đặt node :
-```bash
+```cmake
 install(DIRECTORY include/
         DESTINATION include)
 
