@@ -1,0 +1,65 @@
+# ----------------------
+# Build & Binary Files
+# ----------------------
+/build/
+/install/
+/log/
+/devel/            # ROS1 dùng, ROS2 thường không cần nhưng safe
+/bin/
+/lib/
+/lib64/
+/Debug/
+/Release/
+
+# Object files, libraries, executables
+*.o
+*.obj
+*.so
+*.a
+*.dll
+*.dylib
+*.exe
+*.out
+
+# ----------------------
+# CMake
+# ----------------------
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# ----------------------
+# Editor / IDE
+# ----------------------
+.vscode/
+.idea/
+*.code-workspace
+*.cbp
+*.user
+*.ncb
+*.sdf
+*.opensdf
+*.vcxproj*
+*.sln
+*.xcodeproj
+*.xcworkspace
+
+# ----------------------
+# Temporary / Misc
+# ----------------------
+*.swp
+*.swo
+*~
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# ROS2 Specific
+# ----------------------
+# ROS2 build artifacts and logs
+**/build/
+**/install/
+**/log/
